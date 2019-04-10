@@ -3,13 +3,13 @@
 class Article {
   constructor(domElement) {
     // assign this.domElement to the passed in domElement
-    this.domElement;
+    this.domElement = domElement;
     // create a reference to the ".expandButton" class. 
-    this.expandButton;
+    this.expandButton = this.domElement.querySelector('.expandButton');
     // Using your expandButton reference, update the text on your expandButton to say "expand"
-    
+    this.expandButton.textContent = "Expand";
     // Set a click handler on the expandButton reference, calling the expandArticle method.
-    
+    this.expandButton.addEventListener("click", expandArticle());
   }
 
   expandArticle() {
@@ -28,8 +28,8 @@ class Article {
 */
 
 let articles = document.querySelectorAll(".article");
-articles.forEach(function(art){
-  const instanceArticle = new Article(art);
+articles.forEach(function(domElement){
+  const instanceArticle = new Article(domElement);
   console.log(instanceArticle);
 });
 
