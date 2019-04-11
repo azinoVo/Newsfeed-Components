@@ -1,4 +1,8 @@
 // Because classes are not hoisted you will need to start your code at the bottom of the page.  Look for the comment "START HERE"
+// there's many ways to avoid 'undefined' errors, .bind, arrow syntax. 
+// make sure you use 1 binding technique
+// EX: this.togglePanel = this.togglePanel.bind(this)
+// this.buttons.addEventListener('click', this.togglePanel) 
 
 class Article {
   constructor(domElement) {
@@ -9,12 +13,13 @@ class Article {
     // Using your expandButton reference, update the text on your expandButton to say "expand"
     this.expandButton.textContent = "Expand";
     // Set a click handler on the expandButton reference, calling the expandArticle method.
-    this.expandButton.addEventListener("click", expandArticle());
+    this.expandArticle = this.expandArticle.bind(this);
+    this.expandButton.addEventListener("click", this.expandArticle);
   }
 
   expandArticle() {
     // Using our reference to the domElement, toggle a class to expand or hide the article.
-
+    this.domElement.classList.toggle("article-open");
   }
 }
 
